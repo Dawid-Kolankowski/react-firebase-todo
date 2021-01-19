@@ -1,8 +1,8 @@
 import React from 'react'
-import './App.css'
+import './styles/main.scss'
 
 const App: React.FC = () => {
-  return <div>hello</div>
+  return <div>bb</div>
 }
 
 export default App
