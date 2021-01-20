@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/main.scss'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -12,12 +12,9 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-        {/* @ts-ignore */}
         <PrivateRoute exact path="/" component={Home} />
-
-        {/* <Route exact path="/" component={Home} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/SignUp" component={SignUp} /> */}
+        <PublicRoute exact path="/signup" component={SignUp} restricted />
+        <PublicRoute exact path="/login" component={Login} restricted />
       </Router>
     </AuthProvider>
   )
