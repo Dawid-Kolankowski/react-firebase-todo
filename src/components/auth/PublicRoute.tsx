@@ -1,16 +1,23 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useContext } from 'react'
-import { Route, Redirect, RouteComponentProps } from 'react-router-dom'
+import {
+  Route,
+  Redirect,
+  RouteComponentProps,
+  RouteProps,
+} from 'react-router-dom'
 import { AuthContext } from './AuthProvider'
+
+interface IPublicRouteProps extends RouteProps {
+  component: React.ComponentType<RouteComponentProps>
+  restricted: boolean
+}
 
 const PublicRoute = ({
   component: RouteComponent,
   restricted,
   ...rest
-}: {
-  restricted: boolean
-  component: React.ComponentType<RouteComponentProps>
-}) => {
+}: IPublicRouteProps) => {
   const currentUser = useContext(AuthContext)
 
   return (
