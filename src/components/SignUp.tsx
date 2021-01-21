@@ -20,13 +20,14 @@ const SignUp: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="content-wrapper auth">
       <ToastContainer />
       <form onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
-        <label htmlFor="email">
+        <label htmlFor="email" className="auth__label">
           Email
           <input
+            className="auth__input"
             type="email"
             name="email"
             placeholder="Email"
@@ -34,9 +35,10 @@ const SignUp: React.FC = () => {
             onChange={onChangeEmail}
           />
         </label>
-        <label htmlFor="password">
+        <label htmlFor="password" className="auth__label">
           Password
           <input
+            className="auth__input"
             type="password"
             name="password"
             placeholder="Password"
@@ -44,7 +46,9 @@ const SignUp: React.FC = () => {
             onChange={onChangePassword}
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="button">
+          Sign Up
+        </button>
       </form>
     </div>
   )
