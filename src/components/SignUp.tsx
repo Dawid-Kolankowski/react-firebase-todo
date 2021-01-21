@@ -1,17 +1,27 @@
 import React from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 import { useInput } from './hooks/useInput'
+import firebaseApp from '../firebase'
+import 'react-toastify/dist/ReactToastify.css'
 
 const SignUp: React.FC = () => {
   const { value: email, onChange: onChangeEmail } = useInput('')
   const { value: password, onChange: onChangePassword } = useInput('')
+  const notify = (message: string) => toast.error(message)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(email, password)
+    firebaseApp
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((onError) => {
+        notify(onError.message)
+      })
   }
 
   return (
     <div>
+      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         <label htmlFor="email">
@@ -25,6 +35,7 @@ const SignUp: React.FC = () => {
           />
         </label>
         <label htmlFor="password">
+          Password
           <input
             type="password"
             name="password"
@@ -34,8 +45,6 @@ const SignUp: React.FC = () => {
           />
         </label>
         <button type="submit">Sign Up</button>
-        or
-        <button type="button">Sign Up with google</button>
       </form>
     </div>
   )
