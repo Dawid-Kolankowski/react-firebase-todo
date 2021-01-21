@@ -3,6 +3,8 @@
   --main-color: #ffffff;
   --primary-text-color: #494c6b;
   --secondary-text-color: #9495a5;
+  --background-image-desktop: url('../images/bg-desktop-light.jpg');
+  --background-image-mobile: url('../images/bg-mobile-light.jpg');
 }
 
 .theme-dark {
@@ -10,4 +12,6 @@
   --main-color: #393a4b;
   --primary-text-color: #c8cbe7;
   --secondary-text-color: #5b5e7e;
+  --background-image-desktop: url('../images/bg-desktop-dark.jpg');
+  --background-image-mobile: url('../images/bg-mobile-dark.jpg');
 }
