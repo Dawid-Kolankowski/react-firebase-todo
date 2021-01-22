@@ -7,10 +7,12 @@ import SignUp from './components/SignUp'
 import { AuthProvider } from './components/auth/AuthProvider'
 import PrivateRoute from './components/auth/PrivateRoute'
 import PublicRoute from './components/auth/PublicRoute'
+import NavBar from './components/NavBar'
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
+      <NavBar />
       <Router>
         <PrivateRoute exact path="/" component={Home} />
         <PublicRoute exact path="/signup" component={SignUp} restricted />

@@ -82,3 +82,38 @@
     }
   }
 }
+
+.todo {
+  display: flex;
+  align-items: center;
+  background-color: var(--main-color);
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  &__action__button {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 50px;
+    margin-right: 25px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__input {
+    background-color: transparent;
+    border: 0;
+    font-size: 1rem;
+    width: 85%;
+    color: var(--primary-text-color);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
