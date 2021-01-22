@@ -9,7 +9,7 @@ const CreateTodoInput = () => {
     '',
   )
   const notifyFailure = (message: string) => toast.error(message)
-  const notifyPositive = (message: string) => toast(message)
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const content = todo
