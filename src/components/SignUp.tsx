@@ -1,5 +1,6 @@
 import React from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import { Link } from 'react-router-dom'
 import { useInput } from './hooks/useInput'
 import firebaseApp from '../firebase'
 import 'react-toastify/dist/ReactToastify.css'
@@ -49,6 +50,10 @@ const SignUp: React.FC = () => {
         <button type="submit" className="button">
           Sign Up
         </button>
+        <div className="auth__link">
+          {' '}
+          Already have an account? <Link to="/login"> Sign In</Link>
+        </div>
       </form>
     </div>
   )

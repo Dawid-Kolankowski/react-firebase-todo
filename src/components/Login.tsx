@@ -1,5 +1,6 @@
 import React from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import { Link } from 'react-router-dom'
 import firebaseApp, { provider } from '../firebase'
 import { useInput } from './hooks/useInput'
 
@@ -57,6 +58,10 @@ const Login: React.FC = () => {
         <button onClick={logInWithGoogle} type="button" className="button">
           Sign in with google
         </button>
+        <div className="auth__link">
+          {' '}
+          Dont have an account? <Link to="/signup"> Sign Up</Link>
+        </div>
       </form>
     </div>
   )
