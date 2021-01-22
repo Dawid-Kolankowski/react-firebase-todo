@@ -2,16 +2,22 @@ import React from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import { useInput } from './hooks/useInput'
 import firebaseApp from '../firebase'
+import checkIcon from '../images/icon-check.svg'
 
 const CreateTodoInput = () => {
   const { value: todo, onChange: onChangeTodo, setValue: setTodo } = useInput(
     '',
   )
-  const notify = (message: string) => toast.error(message)
-
+  const notifyFailure = (message: string) => toast.error(message)
+  const notifyPositive = (message: string) => toast(message)
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const content = todo
+
+    if (content.match(/^\s*$/g)) {
+      toast.error('Dont post empty content!')
+      return
+    }
     const { uid } = firebaseApp.auth().currentUser || {}
 
     const document: { content: string; completed: boolean } = {
@@ -24,8 +30,9 @@ const CreateTodoInput = () => {
       .doc(`users/${uid}`)
       .collection('todos')
       .add(document)
+      .then(() => toast('Todo created!'))
       .catch((error) => {
-        notify(error.message)
+        notifyFailure(error.message)
       })
 
     setTodo('')
@@ -38,7 +45,9 @@ const CreateTodoInput = () => {
         className="todo__action__button"
         type="submit"
         aria-label="add todo"
-      />
+      >
+        <img src={checkIcon} alt="check" />
+      </button>
       <input
         className="todo__input"
         type="text"

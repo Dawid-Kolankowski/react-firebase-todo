@@ -3,7 +3,11 @@ import React, { useContext } from 'react'
 import CreateTodoInput from './CreateTodoInput'
 
 const Home: React.FC = () => {
-  return <CreateTodoInput />
+  return (
+    <>
+      <CreateTodoInput />
+    </>
+  )
 }
 
 export default Home
