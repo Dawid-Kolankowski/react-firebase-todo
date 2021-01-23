@@ -41,7 +41,10 @@ const CreateTodoInput = () => {
   }
 
   return (
-    <form className="todo content-wrapper" onSubmit={handleSubmit}>
+    <form
+      className="todo todo--padding content-wrapper"
+      onSubmit={handleSubmit}
+    >
       <ToastContainer />
       <button
         className="todo__action__button"
