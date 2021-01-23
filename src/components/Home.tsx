@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
-// import { AuthContext } from './auth/AuthProvider'
 import CreateTodoInput from './CreateTodoInput'
+import { TodoProvider } from './providers/TodoProvider'
+import TodoTable from './TodoTable'
 
 const Home: React.FC = () => {
   return (
     <>
-      <CreateTodoInput />
+      <TodoProvider>
+        <CreateTodoInput />
+        <TodoTable />
+      </TodoProvider>
     </>
   )
 }
