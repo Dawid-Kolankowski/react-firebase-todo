@@ -94,11 +94,19 @@
     width: 24px;
     height: 24px;
     background-color: transparent;
-    border: 1px solid;
+    border: 2px solid var(--primary-text-color);
     border-radius: 50px;
     margin-right: 25px;
+
+    img {
+      visibility: hidden;
+    }
     &:hover {
       cursor: pointer;
+      background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+      img {
+        visibility: visible;
+      }
     }
     &:focus {
       outline: none;
