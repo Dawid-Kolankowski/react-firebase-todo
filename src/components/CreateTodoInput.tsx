@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import { useInput } from './hooks/useInput'
 import firebaseApp from '../firebase'
 import checkIcon from '../images/icon-check.svg'
+import { AuthContext } from './providers/AuthProvider'
 
 const CreateTodoInput = () => {
   const { value: todo, onChange: onChangeTodo, setValue: setTodo } = useInput(
     '',
   )
+  const { uid } = useContext(AuthContext) || {}
+
   const notifyFailure = (message: string) => toast.error(message)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -18,7 +21,6 @@ const CreateTodoInput = () => {
       toast.error('Dont post empty content!')
       return
     }
-    const { uid } = firebaseApp.auth().currentUser || {}
 
     const document: { content: string; completed: boolean } = {
       content,
