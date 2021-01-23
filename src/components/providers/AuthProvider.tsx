@@ -8,7 +8,11 @@ export const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<firebase.User | null>(null)
 
   useEffect(() => {
-    firebaseApp.auth().onAuthStateChanged((user) => setCurrentUser(user))
+    const unsubscribeFromAuth = firebaseApp
+      .auth()
+      .onAuthStateChanged((user) => setCurrentUser(user))
+
+    return () => unsubscribeFromAuth()
   }, [])
 
   return (
