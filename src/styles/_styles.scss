@@ -65,7 +65,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 48px;
+  @media screen and (min-width: 800px) {
+    margin-top: 70px;
+  }
+
   &__logo {
     font-size: 20px;
     color: white;
@@ -140,7 +144,7 @@
     &__item {
       display: flex;
       align-items: center;
-
+      padding: 15px;
       border-bottom: 1px solid var(--secondary-text-color);
       color: var(--primary-text-color);
     }
@@ -152,4 +156,45 @@
     outline: none;
     cursor: pointer;
   }
+
+  &__stats {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    color: var(--secondary-text-color);
+    font-size: 14px;
+  }
+
+  &__completed {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 2px solid var(--primary-text-color);
+    border-radius: 50px;
+    margin-right: 25px;
+    cursor: pointer;
+    img {
+      visibility: hidden;
+    }
+    &--active {
+      background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+      img {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__delete {
+    background: transparent;
+    font-size: 14px;
+    color: var(--secondary-text-color);
+    &:hover {
+      color: var(--primary-text-color);
+    }
+  }
+}
+
+.text-crossed {
+  text-decoration: line-through;
+  color: var(--secondary-text-color);
 }

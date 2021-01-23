@@ -22,24 +22,38 @@ const TodoItem = ({ content, id, completed }: IProps) => {
       .delete()
   }
 
+  const handleComplete = () => {
+    firebaseApp
+      .firestore()
+      .doc(`users/${uid}`)
+      .collection('todos')
+      .doc(`${id}`)
+      .update({ completed: !completed })
+  }
+
   return (
-    <li className="todo__list__item" style={{ padding: '15px' }}>
+    <li className="todo__list__item">
       <button
-        className="todo__action__button"
+        className={`todo__completed ${
+          completed ? 'todo__completed--active' : ''
+        }`}
         type="submit"
         aria-label="add todo"
+        onClick={() => handleComplete()}
       >
         <img src={checkIcon} alt="check" />
       </button>
 
-      <div className="todo__text">{content}</div>
+      <div className={`todo__text ${completed ? 'text-crossed' : ''}`}>
+        {content}
+      </div>
 
       <button
         type="button"
         className="todo__delete"
         onClick={() => handleDelete()}
       >
-        <img src={crossIcon} alt="check" />
+        <img src={crossIcon} alt="check" className="hidden" />
       </button>
     </li>
   )
